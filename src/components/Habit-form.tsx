@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   FormControl,
   InputLabel,
   MenuItem,
@@ -7,12 +8,24 @@ import {
   TextField,
 } from "@mui/material";
 import { useState } from "react";
+import useHabits from "../store/store";
 
 function HabitForm() {
   const [name, setName] = useState("");
   const [frequency, setFrequency] = useState("");
+  const { habits, addHabit } = useHabits();
+
+  console.log(habits);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (name.trim()) {
+      addHabit(name, frequency);
+      setName("");
+    }
+  };
+
   return (
-    <form action="">
+    <form onSubmit={handleSubmit}>
       <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
         <TextField
           label="Habit Name"
@@ -33,6 +46,9 @@ function HabitForm() {
             <MenuItem value="weekly">Weekly</MenuItem>
           </Select>
         </FormControl>
+        <Button type="submit" variant="contained">
+          Add Habit
+        </Button>
       </Box>
     </form>
   );

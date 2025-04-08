@@ -2,6 +2,7 @@ import { Box, Container, Typography } from "@mui/material";
 import "./App.css";
 import useHabits from "./store/store";
 import HabitForm from "./components/Habit-form";
+import Habitlist from "./components/Habit-list";
 
 function App() {
   // const storeHabit = useHabits();
@@ -15,8 +16,9 @@ function App() {
           </Typography>
 
           {/* Habit form */}
-
           <HabitForm />
+          {/* Habit list */}
+          <Habitlist />
         </Box>
       </Container>
     </div>
