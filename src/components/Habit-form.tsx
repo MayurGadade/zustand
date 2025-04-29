@@ -12,7 +12,7 @@ import useHabits from "../store/store";
 
 function HabitForm() {
   const [name, setName] = useState("");
-  const [frequency, setFrequency] = useState("");
+  const [frequency, setFrequency] = useState<"daily" | "weekly">("daily");
   const { habits, addHabit } = useHabits();
 
   console.log(habits);
